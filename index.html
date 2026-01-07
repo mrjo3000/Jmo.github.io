@@ -1,11 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mrjo3000</title>
+
+  <style>
+    :root {
+      --bg: #0d1117;
+      --fg: #e6edf3;
+      --accent: #58a6ff;
+      --card: #161b22;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 800px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    p {
+      opacity: 0.85;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--fg);
+      border: 1px solid #30363d;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    a:hover {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      opacity: 0.6;
+    }
+  </style>
 </head>
 <body>
-  <h1>It works 🚀</h1>
-  <p>GitHub Pages is now serving this site.</p>
+  <div class="container">
+    <h1>Mrjo<span>3000</span></h1>
+    <p>Coder • Modder • Builder of random cool stuff</p>
+
+    <div class="card">
+      <h2>👋 About</h2>
+      <p>
+        I mess with code, Minecraft, mods, servers, and whatever sounds fun.
+        This site is my hub.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🔗 Links</h2>
+      <div class="links">
+        <a href="https://github.com/Mrjo3000" target="_blank">GitHub</a>
+        <a href="#">Projects</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+
+    <footer>
+      © 2026 Mrjo3000 • GitHub Pages
+    </footer>
+  </div>
 </body>
 </html>
