@@ -11,6 +11,7 @@
       --fg: #e6edf3;
       --accent: #58a6ff;
       --card: #161b22;
+      --matrix: #33ff33;
     }
 
     * {
@@ -27,9 +28,25 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* MATRIX EFFECT */
+    canvas#matrix {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none; /* so it doesn’t block clicks */
+      opacity: 0.15; /* subtle effect */
     }
 
     .container {
+      position: relative;
+      z-index: 1;
       max-width: 800px;
       padding: 2rem;
       text-align: center;
@@ -86,6 +103,9 @@
   </style>
 </head>
 <body>
+  <!-- Matrix canvas -->
+  <canvas id="matrix"></canvas>
+
   <div class="container">
     <h1>Jmo<span>_fr</span></h1>
     <p>Coder • Modder • Builder of random cool stuff</p>
@@ -111,5 +131,43 @@
       © 2026 Mrjo3000 • GitHub Pages
     </footer>
   </div>
+
+  <script>
+    // MATRIX EFFECT
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const fontSize = 16;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(0);
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(13,17,23,0.15)"; // fade effect
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#33ff33"; // green text
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 50);
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
 </body>
 </html>
